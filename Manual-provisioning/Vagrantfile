@@ -1,0 +1,49 @@
+Vagrant.configure("2") do |config|
+    config.hostmanager.enabled = true
+    config.hostmanager.manage_host = true
+    config.vm.define "nginx_vm" do |nginx|
+      nginx.vm.box = "ubuntu/bionic64"
+      nginx.vm.hostname = "nginx"
+      nginx.vm.network "private_network", ip: "192.168.32.6"
+      nginx.vm.network "public_network", bridge: "Intel(R) Dual Band Wireless-N 7260"
+      nginx.vm.provider "virtualbox" do |vb|
+            #   # Display the VirtualBox GUI when booting the machine
+            #   vb.gui = true
+            #
+            #   # Customize the amount of memory on the VM:
+               vb.memory = "1024"
+             end
+    end
+    config.vm.define "tomcat_vm" do |tomcat|
+        tomcat.vm.box = "geerlingguy/centos7"
+        tomcat.vm.hostname = "tomcat"
+        tomcat.vm.network "private_network", ip: "192.168.32.2"
+        tomcat.vm.network "public_network", bridge: "Intel(R) Dual Band Wireless-N 7260"
+        tomcat.vm.provider "virtualbox" do |vb|
+            #   # Display the VirtualBox GUI when booting the machine
+            #   vb.gui = true
+            #
+            #   # Customize the amount of memory on the VM:
+               vb.memory = "1024"
+             end          
+    end
+    config.vm.define "rabbitmq_vm" do |rabbitmq|
+        rabbitmq.vm.box = "geerlingguy/centos7"
+        rabbitmq.vm.hostname = "rabbitmq"
+        rabbitmq.vm.network "private_network", ip: "192.168.32.3"
+        rabbitmq.vm.network "public_network", bridge: "Intel(R) Dual Band Wireless-N 7260"
+    end
+    config.vm.define "memcached_vm" do |memcached|
+        memcached.vm.box = "geerlingguy/centos7"
+        memcached.vm.hostname = "memcached"
+        memcached.vm.network "private_network", ip: "192.168.32.4"
+        memcached.vm.network "public_network", bridge: "Intel(R) Dual Band Wireless-N 7260"
+    end
+  
+    config.vm.define "mysql_vm" do |mysql|
+        mysql.vm.box = "geerlingguy/centos7"
+        mysql.vm.hostname = "mysql"
+        mysql.vm.network "private_network", ip: "192.168.32.5"
+        mysql.vm.network "public_network", bridge: "Intel(R) Dual Band Wireless-N 7260"
+    end
+  end
