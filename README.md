@@ -4,8 +4,6 @@ In this project we will setup a five-service web application locally on 5 virtua
 
 ![](./Images/image-1.PNG)
 
-The provisioning of the services will be done manually at first then will we will automate the provisioning of all the services.
-
 ## Prerequisites:
 
 - Oracle VM Virtualbox.
